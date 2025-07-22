@@ -1,0 +1,86 @@
+	"Apex: fast for": {
+		"prefix": "forf",
+		"body": [
+			"Integer $1Size = this.$1.size();",
+			"for (Integer i = 0, j = $1Size; i < j; i++)",
+			"{\n\t$2 $3 = this.$1[i];\n",
+			"\t$4",
+			"}"
+		],
+		"description": ""
+	},
+
+	"Apex: query method": {
+		"prefix": "qr",
+		"body": [
+			"public List<$1> get$2()",
+			"{",
+			"\tif (this.$3 != null)",
+			"\t\treturn this.$3;",
+			"",
+			"\tthis.$3 = [",
+			"\t\t$4",
+			"\t];",
+			"\tSystem.debug('this.$3.size(): ' + ",
+			"\t\tthis.$3.size());",
+			"",
+			"\treturn this.$3;",
+			"}"
+		],
+		"description": ""
+	},
+
+	"Apex: getter/setter property": {
+		"prefix": "prop",
+		"body": [
+			"public $1 $2",
+			"{",
+			"\tget",
+			"\t{",
+			"\t\tif ($2 == null)",
+			"\t\t\t$2 = new $1();",
+			"\t\treturn $2;",
+			"\t}",
+			"\tset;",
+			"}"
+		],
+		"description": ""
+	},
+
+	"Apex: query test": {
+		"prefix": "qt",
+		"body":[
+			"@isTest",
+			"static void $1()",
+			"{",
+			"\t// Given:",
+			"\t$2 $3 = new $2();",
+			"\t",
+			"\tString exceptionMessage = EMPTY;",
+			"\t",
+			"\t// When:",
+			"\ttry",
+			"\t{",
+			"\t\t$2.$4();",
+			"\t}",
+			"\tcatch (Exception thrownException)",
+			"\t{",
+			"\t\texceptionMessage = $5",
+			"\t\tSystem.debug(exceptionMessage);",
+			"\t}",
+			"\t",
+			"\t// Then:",
+			"\tAssert.areEqual(EMPTY, exceptionMessage, ",
+			"\t\t'$6');",
+			"}"
+		],
+		"description": ""
+	},
+
+	"Apex: empty constant": {
+		"prefix": "empty",
+		"body":[
+			"public static final String EMPTY = '';"
+		],
+		"description": ""
+	},
